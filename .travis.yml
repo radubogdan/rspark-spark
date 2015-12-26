@@ -2,3 +2,12 @@ language: ruby
 rvm:
   - 2.2.3
 before_install: gem install bundler -v 1.11.2
+
+script: 'bundle exec rspec spec/'
+
+notifications:
+  email:
+    recipients:
+      - croitoruradubogdan@gmail.com
+    on_failure: change
+    on_success: never
