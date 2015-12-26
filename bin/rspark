@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+require 'rspark/spark'
+
+# Helpers
+def help
+  puts "\nRspark - Sparklines for your shell"
+  puts "\nARGUMENTS:"
+  puts "  - values (mandatory) - comma separated"
+  puts "  - direction (optional) - -h or -v)"
+  puts "\USAGE:"
+  puts "  - rspark 1 2 3 4 5"
+  puts "  - rspark 1 2 3 4 5 -v"
+  puts "\n"
+end
+
+def allowed_directions
+  {
+    "-v" => "vertical",
+    "-h" => "horizontal"
+  }
+end
+
+if not STDIN.tty? and not STDIN.closed?
+  arr = ARGF.read.strip.split(' ').map(&:to_i)
+  spark = Rspark::Spark.new(values: arr)
+  puts spark.pretty_print
+else
+  case ARGV.length
+  when 0
+    help
+  else
+    possible_direction = ARGV.pop
+
+    if allowed_directions.keys.include?(possible_direction)
+      arr = ARGV.map(&:to_i)
+      spark = Rspark::Spark.new(values: arr, direction: allowed_directions[possible_direction])
+      puts spark.pretty_print
+    elsif possible_direction.to_i.class == Fixnum
+      arr = ARGV.map(&:to_i)
+      arr << possible_direction.to_i
+      spark = Rspark::Spark.new(values: arr)
+      puts spark.pretty_print
+    end
+  end
+end
