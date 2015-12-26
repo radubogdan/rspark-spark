@@ -1,5 +1,8 @@
 # Rspark::Spark
 
+[![Build Status](https://travis-ci.org/radubogdan/rspark-spark.svg?branch=master)](https://travis-ci.org/radubogdan/rspark-spark)
+[![Gem Version](https://badge.fury.io/rb/rspark-spark.svg)](https://badge.fury.io/rb/rspark-spark)
+
 Displays beautiful graphs to use in the terminal.
 
 ## Installation
