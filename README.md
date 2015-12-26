@@ -38,11 +38,14 @@ s.pretty_print
 
 **From terminal**
 
-Just run rspark and pass it a list of numbers (comma-delimited or spaces).
+Just run rspark and pass it a list of numbers delimited by spaces.
 
 ```
 rspark 0 30 55 80 33 150
 ▁▂▃▅▂▇
+
+git shortlog -s | cut -f1 | rspark
+▁█▁▂▁▄▃▁▁▁▄▁▁▁▄▁▁▁▂▆▁▁▁▁▁
 ```
 
 ## Development
